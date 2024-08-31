@@ -1,8 +1,10 @@
 spring:
   r2dbc:
     url: r2dbc:mysql://${mysql.hostname:localhost}:3306/reservation?serverTimezone=Asia/Seoul
-    username: msaportal
-    password: msaportal
+#    username: msaportal
+#    password: msaportal
+    username: root
+    password: 1234
   cloud:
     stream:
       bindings:
