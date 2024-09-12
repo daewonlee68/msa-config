@@ -1,6 +1,6 @@
 database:
-  url: jdbc:postgresql://localhost:5432/msaportal
-#  url: jdbc:mysql://${mysql.hostname:localhost}:3306/msaportal
+#  url: jdbc:postgresql://localhost:5432/msaportal
+  url: jdbc:mysql://${mysql.hostname:localhost}:3306/msaportal
 
 spring:
   datasource:
