@@ -5,8 +5,8 @@ database:
 spring:
   datasource:
     url: ${database.url}?serverTimezone=Asia/Seoul&autoReconnect=true&validationQuery=select 1
-    username: msaportal
-    password: msaportal
+    username: user01   # msaportal
+    password: user1234 # msaportal
 #    username: root
 #    password: 1234
 #    driver-class-name: org.postgresql.Driver
