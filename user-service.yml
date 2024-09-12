@@ -9,8 +9,8 @@ spring:
     password: msaportal
 #    username: root
 #    password: 1234
-    driver-class-name: org.postgresql.Driver
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   mail: # 비밀번호 변경 이메일 발송
     host: smtp.gmail.com # smtp host
     port: 587 # smtp port
