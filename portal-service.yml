@@ -1,14 +1,15 @@
 database:
-url: jdbc:postgresql://localhost:5432/msaportal
-#  url: jdbc:mysql://${mysql.hostname:localhost}:3306/msaportal
+#url: jdbc:postgresql://localhost:5432/msaportal
+  url: jdbc:mysql://${mysql.hostname:localhost}:3306/msaportal
 
 spring:
   datasource:
     url: ${database.url}?serverTimezone=Asia/Seoul&autoReconnect=true&validationQuery=select 1
 #    username: msaportal
 #    password: msaportal
-    username: root
-    password: 1234
+    username: user02   # msaportal
+    password: Abcd123@ # msaportal
+    
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     bus:
