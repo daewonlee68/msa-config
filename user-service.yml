@@ -12,7 +12,7 @@ jdbc:
   url: jdbc:postgresql://localhost:5432/msaportal
   username: postgres
   password: user1234
-  driver-class-name: org.postgresql.Driver
+  driverClassName: org.postgresql.Driver
 
   mail: # 비밀번호 변경 이메일 발송
     host: smtp.gmail.com # smtp host
