@@ -10,8 +10,8 @@ database:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 jdbc:
   url: jdbc:postgresql://localhost:5432/msaportal
-    username: root
-    password: 1234
+    username: postgres
+    password: user1234
     driver-class-name: org.postgresql.Driver
 
   mail: # 비밀번호 변경 이메일 발송
