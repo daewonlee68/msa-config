@@ -1,28 +1,17 @@
-database:
-  url: jdbc:postgresql://localhost:5432/msaportal
-#  url: jdbc:mysql://${mysql.hostname:localhost}:3306/msaportal
-
-#spring:   #mysql
-#  datasource:
-#    url: ${database.url}?serverTimezone=Asia/Seoul&autoReconnect=true&validationQuery=select 1
-#    username: user02   # msaportal
-#    password: Abcd123@ # msaportal
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#jdbc:
-#  url: jdbc:postgresql://localhost:5432/msaportal
-#  username: postgres
-#  password: user1234
-#  driverClassName: org.postgresql.Driver
-
-jdbc:
-#  url: jdbc:postgresql://10.10.5.183:5432/cenausdb03?charSet=UTF-8&prepareThreshold=1
-  url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb03?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
-  username: cenadm03
-  password: cenlotaws123!
-  driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#  driverClassName: org.postgresql.Driver
+server:
+  port: 9190
 
 spring:
+  application:
+    name: user-service
+#  cloud:
+#    config:
+#      enabled: true
+#      bootstrap.enabled: true
+  main:
+    allow-bean-definition-overriding: true
+
+  # oauth2 를 사용하기 위해서는 아래의 TODO 를 등록해야 함
   security:
     oauth2:
       client:
@@ -43,15 +32,68 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user_name_attribute: id
 
-  mail: # 비밀번호 변경 이메일 발송
-    host: smtp.gmail.com # smtp host
-    port: 587 # smtp port
-    username: email_username # 계정
-    password: 'email_password' # 비밀번호 - 구글 보안 2단계 인증 해제, 보안 수준이 낮은 앱의 액세스 허용(https://myaccount.google.com/lesssecureapps)
+jdbc:
+#  url: jdbc:postgresql://10.10.5.183:5432/cenausdb03?charSet=UTF-8&prepareThreshold=1
+  url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb03?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+  username: cenadm03
+  password: cenlotaws123!
+  driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#  driverClassName: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
     properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        ddl-auto: update
+        format_sql: true
+#        default_batch_fetch_size: 1000
+    show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 50MB
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+
+# rabbitmq server
+#  rabbitmq:
+#    host: ${rabbitmq.hostname:localhost}
+#    port: 5672
+#    username: guest
+#    password: guest
+
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 86400
+
+# config server actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info
+  health:
+    mail:
+      enabled: false
+
+info:
+  app:
+    name: User Service
+    description: 로그인, 회원관리 및 관리자 기능을 제공
+
+log4jdbc:
+  spylogdelegator:
+    name: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+  dump:
+    sql:
+      maxlinelength: 0
+
+messages:
+  directory: test 
