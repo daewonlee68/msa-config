@@ -1,0 +1,28 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discoveryserver
+  profiles:
+    active:
+      on-profile: dev
+  security:
+    user:
+      name: admin
+      password: admin
+management: # 엔트포인트 노출 설정 애플리케이션을 배포하는 경우 인증 없이 모든 액추에이터 끝점에 액세스
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# eureka 가 포함되면 eureka server 도 등록되므로 해제한다.
+eureka:
+  instance:
+    hostname: http://cenlots2024-discoveryserver-service
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
