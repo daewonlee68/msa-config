@@ -22,6 +22,27 @@ jdbc:
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 #  driverClassName: org.postgresql.Driver
 
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 6c1a559189b320e2b1c6ede7c5506c01 # TODO https://developers.kakao.com/product/kakaoLogin
+            client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf # TODO
+            redirect-uri: http://localhost:8000/oauth2/callback/kakao
+##            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            scope: profile_nickname
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
   mail: # 비밀번호 변경 이메일 발송
     host: smtp.gmail.com # smtp host
     port: 587 # smtp port
