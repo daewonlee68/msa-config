@@ -3,3 +3,14 @@ token:
   expiration_time: 7200000
   refresh_time: 86400000
   secret: 'token_secret'
+
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
+#  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+#  token-validity-in-seconds: 86400
+#echo 'cen-cenlots-dw-spring-boot-jwt-secret-2024-12'|base64
+  secret: 9F49BE664A28861CD323A019EF83B9CC4A8F6C987D553C83008D65B0E206D33A6F162B68DF88999BEA7A65156FEC294C9263F8334DDD29303258C945FFEEAAE4
+  refresh-token-validity-in-seconds: 1209600 # 14일
+  access-token-validity-in-seconds: 43200 # 12시간
