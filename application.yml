@@ -1,8 +1,8 @@
 # 2시간(7,200,000), 1일(86,400,000) jwt token
-token:
-  expiration_time: 7200000
-  refresh_time: 86400000
-  secret: 'token_secret'
+#token:
+#  expiration_time: 7200000
+#  refresh_time: 86400000
+#  secret: 'token_secret'
 
 jwt:
   header: Authorization
@@ -14,3 +14,7 @@ jwt:
   secret: 9F49BE664A28861CD323A019EF83B9CC4A8F6C987D553C83008D65B0E206D33A6F162B68DF88999BEA7A65156FEC294C9263F8334DDD29303258C945FFEEAAE4
   refresh-token-validity-in-seconds: 1209600 # 14일
   access-token-validity-in-seconds: 43200 # 12시간
+
+file:
+  directory: ${app.home:${user.home}}/msa-attach-volume # url 사용시에는 사용되지 않는다
+  url: http://${file.hostname:localhost}:8080 # nginx 로 파일 다운로드 처리
