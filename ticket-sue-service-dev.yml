@@ -15,11 +15,6 @@ jdbc:
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
-api:
-  servicecall:
-    base:
-      url:  http://localhost:8000
-
 resilience4j:
   circuitbreaker:
     configs:
