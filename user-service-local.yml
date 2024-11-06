@@ -1,9 +1,12 @@
 server:
-  port: 9190
+  port: 9010
 
 spring:
   application:
     name: user-service
+  profiles:
+    active:
+      on-profile: local
 #  cloud:
 #    config:
 #      enabled: true
