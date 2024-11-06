@@ -63,9 +63,6 @@ springdoc:
   swagger-ui:
   path: /swagger-ui.html
 
-messages:
-  directory: test # ${user.dir}/msa-attach-volume/messages
-
 apigateway:
   host: https://cenlots-api.cloit.dev:${server.port}
 
