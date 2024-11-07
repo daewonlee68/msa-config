@@ -1,0 +1,96 @@
+spring:
+  application:
+    name: interadapter
+  profiles:
+    active:
+      on-profile: prod
+  datasource:
+    hikari:
+      jdbc-url: jdbc:postgresql://10.10.5.183:5432/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+      driver-class-name: org.postgresql.Driver
+      password: user1234
+      username: postgres  
+      idle-timeout: 10000
+      poolName: SpringBootJPAHikariCP
+      maximum-pool-size: 50
+      minimumIdle: 10
+      connectionTimeout: 10000
+      validationTimeout: 10000
+      max-lifetime: 600000
+      leakDetectionThreshold: 450000
+      data-source-properties.cachePrepStmts: true
+      data-source-properties.prepStmtCacheSize: 250
+      data-source-properties.prepStmtCacheSqlLimit: 2048
+      connection-test-query: SELECT now() as TEST
+
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+
+  jeckson:
+    serialization:
+      INDENT_OUTPUT: ture
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+        
+endpoints:
+  shutdown:
+    enabled: true
+
+server:
+  type: RECV
+
+so:
+  keepalive: true
+  backlog: 50
+thread:
+  sleep: 200
+tcp:
+  port: 40000
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 5                #circuit Breaker가 열리기 전의 슬라이딩 윈도우 크기 (여기서는 5번의 호출)
+        failureRateThreshold: 50            #실패율 임계값 (여기서는 50%).
+        waitDurationInOpenState: 10s      #Circuit Breaker가 열린 상태에서 닫힌 상태로 돌아가기 전까지 대기하는 시간 (여기서는 10초).
+        permittedNumberOfCallsInHalfOpenState: 3    #반열림 상태에서 허용되는 호출 수
+        minimumNumberOfCalls: 5
+        recordExceptions:
+            - org.springframework.web.client.HttpServerErrorException
+            - java.util.concurrent.TimeoutException
+            - java.io.IOException
+ #       ignoreExceptions:
+ #           - io.github.robwin.exception.BusinessException
+    shared:
+        slidingWindowSize: 100
+        permittedNumberOfCallsInHalfOpenState: 30
+        waitDurationInOpenState: 3s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        ignoreExceptions:
+            - io.github.robwin.exception.BusinessException
+    instances:
+      reqTicketsueApiCircuitBreaker:
+        baseConfig: default
+
+#resilience4j.retry:
+#  configs:
+#    default:
+#      maxAttempts: 3
+#      waitDuration: 1s
+#  instances:
+#    myService:
+#      baseConfig: default
