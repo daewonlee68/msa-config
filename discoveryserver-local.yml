@@ -20,7 +20,7 @@ management: # 엔트포인트 노출 설정 애플리케이션을 배포하는 �
 # eureka 가 포함되면 eureka server 도 등록되므로 해제한다.
 eureka:
   instance:
-    hostname: localhost
+    hostname: cenlots2024-discoveryserver-service
   client:
     register-with-eureka: false
     fetch-registry: false
