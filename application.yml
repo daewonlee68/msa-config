@@ -21,3 +21,8 @@ file:
 
 messages:
   directory: test # ${user.dir}/msa-attach-volume/messages
+
+api:
+  servicecall:
+    base:
+      url:  http://cenlots2024-cenlots-api-service:8080
