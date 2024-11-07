@@ -70,7 +70,7 @@ apigateway:
   host: http://cenlots2024-cenlots-api-service:${server.port}
 
 # 2시간(7,200,000), 1일(86,400,000) jwt token
-token:
-  expiration_time: 7200000
-  refresh_time: 86400000
-  secret: 'token_secret'
+#token:
+#  expiration_time: 7200000
+#  refresh_time: 86400000
+#  secret: 'token_secret'
