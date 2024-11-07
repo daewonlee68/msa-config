@@ -44,10 +44,4 @@ resilience4j:
       reqTicketsueApiCircuitBreaker:
         baseConfig: default
 
-api:
-  servicecall:
-    base:
-      url:  http://cenlots2024-cenlots-api-service:8080
-
-
         
