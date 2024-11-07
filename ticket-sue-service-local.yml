@@ -43,8 +43,3 @@ resilience4j:
     instances:
       reqTicketsueApiCircuitBreaker:
         baseConfig: default
-  
-api:
-  servicecall:
-    base:
-      url:  http://localhost:8080
