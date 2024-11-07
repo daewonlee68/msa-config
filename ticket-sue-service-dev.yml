@@ -46,4 +46,4 @@ resilience4j:
 api:
   servicecall:
     base:
-      url:  http://localhost:8080
+      url:  http://cenlots2024-cenlots-api-service:8080
