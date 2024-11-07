@@ -32,7 +32,7 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/ticket-sue-service/(?<segment>.*), /$\{segment}
         - id: openapi
-          uri: http://cenlots-api.cloit.dev:${server.port}
+          uri: http://cenlots2024-cenlots-api-service:${server.port}
           predicates:
             - Path=/v3/api-docs/**
           filters:
@@ -57,11 +57,11 @@ info:
   app:
     name: Spring Cloud Gateway
     description: API 라우팅 및 보안, 모니터링/메트릭 등의 기능을 간단하고 효과적인 방법으로 제공
-  swagger-ui: http://cenlots-api.cloit.dev:${server.port}/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+  swagger-ui: http://cenlots2024-cenlots-api-service:${server.port}/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
 springdoc:
   swagger-ui:
   path: /swagger-ui.html
   
 apigateway:
-  host: http://cenlots-api.cloit.dev:${server.port}
+  host: http://cenlots2024-cenlots-api-service:${server.port}
