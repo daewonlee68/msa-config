@@ -54,9 +54,6 @@ endpoints:
   shutdown:
     enabled: true
 
-server:
-  type: RECV
-
 so:
   keepalive: true
   backlog: 50
