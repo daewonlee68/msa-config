@@ -41,5 +41,5 @@ resilience4j:
         ignoreExceptions:
             - io.github.robwin.exception.BusinessException
     instances:
-      reqTicketsueApiCircuitBreaker:
+      reqMngTcktSusValidateApiCircuitBreaker:
         baseConfig: default
