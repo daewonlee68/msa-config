@@ -4,12 +4,7 @@ spring:
   profiles:
     active:
       on-profile: local
-  cloud:
-    config:
-      fail-fast: false
-  config:
-    import: optional:configserver:http://cenlots2024-configserver-service:8888
-
+      
   datasource:
     hikari:
   #    jdbc-url: jdbc:postgresql://localhost:5432/msaportal?charSet=UTF-8&prepareThreshold=1
