@@ -1,6 +1,6 @@
 spring:
   application:
-    name: interadapter
+    name: interadpserver
   profiles:
     active:
       on-profile: prod
