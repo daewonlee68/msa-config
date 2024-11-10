@@ -11,8 +11,8 @@ spring:
       on-profile: local
 
 jdbc:
-#  url: jdbc:postgresql://10.10.5.183:5432/cenausdb03?charSet=UTF-8&prepareThreshold=1
-  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+  url: jdbc:postgresql://10.10.5.183:5432/cenausdb03?charSet=UTF-8&prepareThreshold=1
+#  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
   username: cenadm02
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
