@@ -11,8 +11,8 @@ spring:
       
   datasource:
     hikari:
-      jdbc-url: jdbc:postgresql://localhost:5432/msaportal?charSet=UTF-8&prepareThreshold=1
-#      jdbc-url: jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+#      jdbc-url: jdbc:postgresql://localhost:5432/msaportal?charSet=UTF-8&prepareThreshold=1
+      jdbc-url: jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
       driver-class-name: org.postgresql.Driver
       username: cenadm02
       password: cenlotaws123!
