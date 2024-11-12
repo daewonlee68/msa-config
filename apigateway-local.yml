@@ -68,7 +68,17 @@ messages:
 
 apigateway:
   host: http://cenlots2024-cenlots-api-service:${server.port}
+  
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
 
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9761/eureka
+      
 # 2시간(7,200,000), 1일(86,400,000) jwt token
 #token:
 #  expiration_time: 7200000
