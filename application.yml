@@ -17,7 +17,7 @@ jwt:
 
 file:
   directory: ${app.home:${user.home}}/msa-attach-volume # url 사용시에는 사용되지 않는다
-  url: http://${file.hostname:localhost}:8080 # nginx 로 파일 다운로드 처리
+  url: http://${file.hostname:localhost} # nginx 로 파일 다운로드 처리
 
 messages:
   directory: test # ${user.dir}/msa-attach-volume/messages
@@ -25,4 +25,4 @@ messages:
 api:
   servicecall:
     base:
-      url:  http://cenlots2024-cenlots-api-service:8080
+      url:  http://cenlots2024-cenlots-api-service
