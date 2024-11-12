@@ -9,9 +9,23 @@ spring:
   profiles:
     active:
       on-profile: dev
+  security:
+    user:
+      name: admin
+      password: admin
 
 jdbc:
   url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
   username: cenadm02
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: cenlots2024-discoveryserver-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/

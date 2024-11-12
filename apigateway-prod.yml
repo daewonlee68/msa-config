@@ -7,6 +7,10 @@ spring:
   profiles:
     active:
       on-profile: prod
+  security:
+    user:
+      name: admin
+      password: admin
   cloud:
     gateway:
       routes:
@@ -65,4 +69,14 @@ springdoc:
 
 apigateway:
   host: https://cenlots2024-cenlots-api-service
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: cenlots2024-discoveryserver-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
   

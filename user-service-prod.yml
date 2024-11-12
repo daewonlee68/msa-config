@@ -7,6 +7,10 @@ spring:
   profiles:
     active:
       on-profile: prod
+  security:
+    user:
+      name: admin
+      password: admin
 #  cloud:
 #    config:
 #      enabled: true
@@ -99,4 +103,15 @@ log4jdbc:
       maxlinelength: 0
 
 messages:
-  directory: test 
+  directory: test
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: cenlots2024-discoveryserver-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
