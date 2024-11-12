@@ -64,5 +64,5 @@ springdoc:
   path: /swagger-ui.html
 
 apigateway:
-  host: https://cenlots2024-cenlots-api-service:${server.port}
+  host: https://cenlots2024-cenlots-api-service
   
