@@ -7,10 +7,6 @@ spring:
   profiles:
     active:
       on-profile: dev
-  security:
-    user:
-      name: admin
-      password: admin
 #  cloud:
 #    config:
 #      enabled: true
@@ -20,6 +16,9 @@ spring:
 
   # oauth2 를 사용하기 위해서는 아래의 TODO 를 등록해야 함
   security:
+    user:
+      name: admin
+      password: admin
     oauth2:
       client:
         registration:
