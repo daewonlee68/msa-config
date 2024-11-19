@@ -25,7 +25,7 @@ spring:
           kakao:
             client-id: 6c1a559189b320e2b1c6ede7c5506c01 # TODO https://developers.kakao.com/product/kakaoLogin
             client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf # TODO
-            redirect-uri: http://localhost:8000/oauth2/callback/kakao
+            redirect-uri: http://localhost:8080/oauth2/callback/kakao
 ##            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             client-authentication-method: POST
             authorization-grant-type: authorization_code
