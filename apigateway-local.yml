@@ -82,7 +82,10 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
-
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enableSelfPreservation: false
+    eviction-interval-timer-in-ms: 3000
       
 # 2시간(7,200,000), 1일(86,400,000) jwt token
 #token:
