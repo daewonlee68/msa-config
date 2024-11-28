@@ -12,8 +12,8 @@ jwt:
 #  token-validity-in-seconds: 86400
 #echo 'cen-cenlots-dw-spring-boot-jwt-secret-2024-12'|base64
   secret: 9F49BE664A28861CD323A019EF83B9CC4A8F6C987D553C83008D65B0E206D33A6F162B68DF88999BEA7A65156FEC294C9263F8334DDD29303258C945FFEEAAE4
-  refresh-token-validity-in-seconds: 604800000 #1일은 86,400,000  7일 × 86,400,000 = 604,800,000
-  access-token-validity-in-seconds: 14400000 #1시간  3600000 4시간*3600000 = 14400000 
+  refresh-token-validity-in-seconds: 604800 #1일은 86,400  7일 × 86,400 = 604,800
+  access-token-validity-in-seconds: 14400 # 1시간-> 3600 4시간*3600 = 14400
 
 file:
   directory: ${app.home:${user.home}}/msa-attach-volume # url 사용시에는 사용되지 않는다
