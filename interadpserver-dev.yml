@@ -12,8 +12,8 @@ spring:
     hikari:
       jdbc-url: jdbc:postgresql://10.10.5.183:5432/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
       driver-class-name: org.postgresql.Driver
-      password: user1234
-      username: postgres  
+      username: cenadm02
+      password: cenlotaws123!
       idle-timeout: 10000
       poolName: SpringBootJPAHikariCP
       maximum-pool-size: 50
