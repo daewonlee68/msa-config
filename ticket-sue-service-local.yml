@@ -22,6 +22,15 @@ spring:
     user:
       name: admin
       password: admin
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+    port: 6666
+    host: localhost
+
 jdbc:
   #url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
   url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
