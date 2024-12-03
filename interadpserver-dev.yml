@@ -42,7 +42,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: refresh, health, beans
   endpoint:
     health:
       show-details: always
@@ -50,10 +50,6 @@ management:
 endpoints:
   shutdown:
     enabled: true
-
-server:
-  type: RECV
-
 so:
   keepalive: true
   backlog: 50
@@ -76,8 +72,6 @@ resilience4j:
             - org.springframework.web.client.HttpServerErrorException
             - java.util.concurrent.TimeoutException
             - java.io.IOException
- #       ignoreExceptions:
- #           - io.github.robwin.exception.BusinessException
     shared:
         slidingWindowSize: 100
         permittedNumberOfCallsInHalfOpenState: 30
