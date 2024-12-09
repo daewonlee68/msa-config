@@ -12,10 +12,6 @@ spring:
   cloud:
     discovery:
       enabled: false
-  security:
-    user:
-      name: admin
-      password: admin
   redis:
     lettuce:
       pool:
