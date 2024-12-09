@@ -31,8 +31,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, info
-
+        include: "health,info,metrics"
+  endpoint:
+    health:
+      show-details: when-authorized
 #eureka:
 #  instance:
 #    prefer-ip-address: true
