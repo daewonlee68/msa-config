@@ -9,6 +9,9 @@ spring:
   profiles:
     active:
       on-profile: dev
+  cloud:
+    discovery:
+      enabled: false
   security:
     user:
       name: admin
