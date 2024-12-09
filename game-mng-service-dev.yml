@@ -31,12 +31,12 @@ jdbc:
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
-eureka:
-  instance:
-    prefer-ip-address: true
-    hostname: cenlots2024-discoveryserver-service
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    hostname: cenlots2024-discoveryserver-service
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
