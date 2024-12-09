@@ -32,8 +32,10 @@ jdbc:
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
 management:
-  security:
-    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info
 
 #eureka:
 #  instance:
