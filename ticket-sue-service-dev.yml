@@ -11,11 +11,7 @@ spring:
       on-profile: dev
   cloud:
     discovery:
-      enabled: false
-  security:
-    user:
-      name: admin
-      password: admin
+      enabled: false      
   redis:
     lettuce:
       pool:
@@ -59,13 +55,18 @@ resilience4j:
       reqMngTcktSusValidateApiCircuitBreaker:
         baseConfig: default
 
-eureka:
-  instance:
-    prefer-ip-address: true
-    hostname: cenlots2024-discoveryserver-service
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info
 
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    hostname: cenlots2024-discoveryserver-service
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
