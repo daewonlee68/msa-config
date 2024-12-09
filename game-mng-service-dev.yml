@@ -31,6 +31,10 @@ jdbc:
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
+management:
+  security:
+    enabled: false
+
 #eureka:
 #  instance:
 #    prefer-ip-address: true
