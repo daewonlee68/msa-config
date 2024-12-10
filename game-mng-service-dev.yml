@@ -12,6 +12,8 @@ spring:
   cloud:
     discovery:
       enabled: false
+    loadbalancer:
+      enabled: false
   redis:
     lettuce:
       pool:
