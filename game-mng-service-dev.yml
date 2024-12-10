@@ -31,25 +31,15 @@ jdbc:
 
 management:
   endpoints:
-    enabled-by-default: false
-  endpoint:
-    health:
-      enabled: true
-    info:
-      enabled: true
+    web:
+      exposure:
+        include: "*"  # 모든 Actuator 엔드포인트 활성화
 eureka:
   client:
     register-with-eureka: false  # 자신을 Eureka에 등록하지 않음
     fetch-registry: false
 
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "health,info,metrics"
-#  endpoint:
-#    health:
-#      show-details: when-authorized
+
 #eureka:
 #  instance:
 #    prefer-ip-address: true
