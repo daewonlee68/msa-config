@@ -29,11 +29,12 @@ jdbc:
 
 management:
   endpoints:
-    enabled-by-default: false
-
-logging:
-  level:
-    org.springframework.boot.actuate: DEBUG
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
 
 #management:
 #  endpoints:
