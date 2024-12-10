@@ -27,6 +27,10 @@ jdbc:
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
+management:
+  endpoints:
+    enabled-by-default: false
+
 #management:
 #  endpoints:
 #    web:
