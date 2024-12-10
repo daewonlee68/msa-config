@@ -29,12 +29,12 @@ jdbc:
 
 management:
   endpoints:
-    web:
-      exposure:
-        include: health,info,metrics
+    enabled-by-default: false
   endpoint:
     health:
-      show-details: when_authorized
+      enabled: true
+    info:
+      enabled: true
 
 #management:
 #  endpoints:
