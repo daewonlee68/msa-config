@@ -31,6 +31,10 @@ management:
   endpoints:
     enabled-by-default: false
 
+logging:
+  level:
+    org.springframework.boot.actuate: DEBUG
+
 #management:
 #  endpoints:
 #    web:
