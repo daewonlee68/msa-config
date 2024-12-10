@@ -27,14 +27,14 @@ jdbc:
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "health,info,metrics"
-  endpoint:
-    health:
-      show-details: when-authorized
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "health,info,metrics"
+#  endpoint:
+#    health:
+#      show-details: when-authorized
 #eureka:
 #  instance:
 #    prefer-ip-address: true
