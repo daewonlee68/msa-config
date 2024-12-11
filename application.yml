@@ -22,6 +22,9 @@ api:
     base:
       url:  http://cenlots2024-cenlots-api-service
       port: 8080
-    userservice: http://cenlots2024-userservice-service
-    gamemngservice: http://cenlots2024-gamemngservice-service
-    ticketsueservice: http://cenlots2024-ticketsueservice-service
+    userservice:
+      url: http://cenlots2024-userservice-service
+    gamemngservice:
+      url: http://cenlots2024-gamemngservice-service
+    ticketsueservice:
+      url: http://cenlots2024-ticketsueservice-service
