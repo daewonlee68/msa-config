@@ -17,7 +17,7 @@ spring:
         max-idle: 10
         min-idle: 2
     port: 16379
-    host: http://dev-elasticache-replication-group.ikmdkh.ng.0001.apn2.cache.amazonaws.com
+    host: dev-elasticache-replication-group.ikmdkh.ng.0001.apn2.cache.amazonaws.com
 
 #  cloud:
 #    config:
