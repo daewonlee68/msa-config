@@ -56,6 +56,9 @@ spring:
       discovery:
         locator:
           enabled: true
+      httpclient:
+        connect-timeout: 30000
+        response-timeout: 30000
 
 # config server actuator
 management:
