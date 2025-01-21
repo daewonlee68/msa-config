@@ -28,3 +28,4 @@ api:
       url: http://cenlots2024-gamemngservice-service
     ticketsueservice:
       url: http://cenlots2024-ticketsueservice-service
+    backendurl: https://cenlots-api.cloit.dev
