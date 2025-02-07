@@ -29,4 +29,4 @@ api:
     ticketsueservice:
       url: http://cenlots2024-ticketsueservice-service
     callurllist: 
-      url: /game-mng-service/api/v1/rest/selectCallUriRltn
+      url: /api/v1/rest/selectCallUriRltn
