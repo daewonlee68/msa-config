@@ -35,6 +35,20 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/ticket-sue-service/(?<segment>.*), /$\{segment}
+        - id: game-lotto645-service
+          uri: lb://GAME-LOTTO645-SERVICE
+          predicates:
+            - Path=/game-lotto645-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-lotto645-service/(?<segment>.*), /$\{segment}
+        - id: game-lotto649-service
+          uri: lb://GAME-LOTTO649-SERVICE
+          predicates:
+            - Path=/game-lotto649-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-lotto649-service/(?<segment>.*), /$\{segment}
         - id: openapi
           uri: http://cenlots2024-cenlots-api-service
           predicates:

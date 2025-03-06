@@ -1,6 +1,6 @@
 
 server:
-  port: 8010
+  port: 8030
 
 spring:
   application:
@@ -33,8 +33,8 @@ spring:
 
 jdbc:
   #url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
-  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
-  username: cenadm01
+  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb04?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+  username: cendev04
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
