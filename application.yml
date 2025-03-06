@@ -28,6 +28,8 @@ api:
       url: http://cenlots2024-gamemngservice-service
     ticketsueservice:
       url: http://cenlots2024-ticketsueservice-service
+    gamepowerballservice:
+      url: http://cenlots2024-gamepowerballservice-service
     callurllist: 
       url: /api/v1/rest/selectCallUriRltn
     prevLotto645: /game-lotto645-service
