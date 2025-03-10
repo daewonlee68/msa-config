@@ -56,6 +56,13 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/game-lotto649-service/(?<segment>.*), /$\{segment}
+        - id: game-powerball-service
+          uri: lb://GAME-POWERBALL-SERVICE
+          predicates:
+            - Path=/game-powerball-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-powerball-service/(?<segment>.*), /$\{segment}
         - id: openapi
           uri: http://cenlots2024-cenlots-api-service:${server.port}
           predicates:
