@@ -62,8 +62,9 @@ so:
   backlog: 50
 thread:
   sleep: 200
-#tcp:
-#  port: 40000
+if:
+  tcp:
+    port: 40000
 
 resilience4j:
   circuitbreaker:
