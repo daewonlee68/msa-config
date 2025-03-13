@@ -1,8 +1,6 @@
 server:
   port: 5050
   type: recv
-tcp:
-  port: ${SERVER_PORT:40000}
   
 spring:
   application:
