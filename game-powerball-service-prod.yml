@@ -47,6 +47,16 @@ resilience4j:
     instances:
       reqMngTcktSusValidateApiCircuitBreaker:
         baseConfig: default
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # 모든 Actuator 엔드포인트 활성화
+    health:
+      show-details: never
+  health:
+    db:
+      enabled: false
 
 eureka:
   instance:
