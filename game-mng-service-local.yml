@@ -57,3 +57,8 @@ logging:
       resultset: off
       audit: off
       connection: off
+    org:
+	  mybatis: INFO
+    org:
+	  apache:
+	    ibatis: INFO
