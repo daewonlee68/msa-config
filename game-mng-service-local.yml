@@ -50,8 +50,8 @@ eureka:
 
 logging:
   level:
-    jdbc: off
-      sqlonly: off
+    jdbc: INFO
+      sqlonly: INFO
       sqltiming: off
       resultsettable: off
       resultset: off
