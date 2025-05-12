@@ -59,6 +59,3 @@ logging:
       connection: off
     org:
 	  mybatis: INFO
-    org:
-	  apache:
-	    ibatis: INFO
