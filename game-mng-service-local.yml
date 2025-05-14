@@ -45,11 +45,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
-logging:
-  level:
-    jdbc.sqlonly: off
-    jdbc.sqltiming: off
-    jdbc.resultsettable: off
-    jdbc.audit: off
-    jdbc.resultset: off
-    jdbc.connection: off
