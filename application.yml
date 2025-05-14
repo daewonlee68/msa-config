@@ -34,3 +34,12 @@ api:
       url: /api/v1/rest/selectCallUriRltn
     prevLotto645: /game-lotto645-service
     prevLotto649: /game-lotto649-service
+
+log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+log4jdbc.dump.sql.maxlinelength=0
+log4jdbc.dump.sql.select=true
+log4jdbc.dump.sql.insert=true
+log4jdbc.dump.sql.update=true
+log4jdbc.dump.sql.delete=true
+log4jdbc.dump.resultset=false
+log4jdbc.dump.connection=false
