@@ -4,7 +4,7 @@ server:
   
 spring:
   application:
-    name: interadpserver
+    name: interadpcblottoserver
   profiles:
     active:
       on-profile: dev
