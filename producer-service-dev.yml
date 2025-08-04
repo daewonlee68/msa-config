@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: game-powerball-service
+    name: producer-service
   main:
     allow-bean-definition-overriding: true
   profiles:

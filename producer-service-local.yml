@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: game-cblotto-service
+    name: producer-service
   main:
     allow-bean-definition-overriding: true
   profiles:

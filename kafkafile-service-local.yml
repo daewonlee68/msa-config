@@ -1,24 +1,42 @@
+
 server:
-  port: 8080
+  port: 8060
 
 spring:
   application:
-    name: producer-service
+    name: kafkafile-service
   main:
     allow-bean-definition-overriding: true
   profiles:
     active:
-      on-profile: prod
+      on-profile: local
+  cloud:
+    config:
+      retry:
+        initial-interval: 1000
+        max-attempts: 6
+        max-interval: 2000
+        multiplier: 1.1
+      fail-fast: true
   security:
     user:
       name: admin
       password: admin
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+    port: 6666
+    host: localhost
+
 jdbc:
-  url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+  #url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb01?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
   username: cenadm01
   password: cenlotaws123!
   driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-
 
 resilience4j:
   circuitbreaker:
@@ -47,26 +65,24 @@ resilience4j:
     instances:
       reqMngTcktSusValidateApiCircuitBreaker:
         baseConfig: default
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"  # 모든 Actuator 엔드포인트 활성화
-    health:
-      show-details: never
-  health:
-    db:
-      enabled: false
 
 eureka:
   instance:
-    prefer-ip-address: true
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 3
+    leaseExpirationDurationInSeconds: 5
     hostname: cenlots2024-discoveryserver-service
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
+  health-check:
+      enabled: true
 
-
-        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,beans,conditions
+        exclude: threaddump,heapdump

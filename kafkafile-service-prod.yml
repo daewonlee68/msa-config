@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: producer-service
+    name: kafkafile-service
   main:
     allow-bean-definition-overriding: true
   profiles:
