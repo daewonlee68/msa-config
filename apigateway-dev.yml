@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: lotuser-service
+    name: ApiGateWay
   profiles:
     active:
       on-profile: dev
