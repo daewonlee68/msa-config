@@ -14,6 +14,13 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: lotuser-service
+          uri: lb://LOTUSER-SERVICE
+          predicates:
+            - Path=/lotuser-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/lotuser-service/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
