@@ -7,87 +7,90 @@ spring:
   profiles:
     active:
       on-profile: dev
-  cloud:
-    discovery:
-      enabled: false
-  redis:
-    lettuce:
-      pool:
-        max-active: 10
-        max-idle: 10
-        min-idle: 2
-    port: 16379
-    host: dev-elasticache-replication-group.ikmdkh.ng.0001.apn2.cache.amazonaws.com
-
-#  cloud:
-#    config:
-#      enabled: true
-#      bootstrap.enabled: true
-  main:
-    allow-bean-definition-overriding: true
-
-  # oauth2 를 사용하기 위해서는 아래의 TODO 를 등록해야 함
   security:
     user:
       name: admin
       password: admin
-    oauth2:
-      client:
-        registration:
-          kakao:
-            client-id: 6c1a559189b320e2b1c6ede7c5506c01 # TODO https://developers.kakao.com/product/kakaoLogin
-            client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf # TODO
-            redirect-uri: https://cenlots-api.cloit.dev/oauth2/callback/kakao
-##            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
-            client-authentication-method: POST
-            authorization-grant-type: authorization_code
-            scope: profile_nickname
-            client-name: Kakao
-        provider:
-          kakao:
-            authorization_uri: https://kauth.kakao.com/oauth/authorize
-            token_uri: https://kauth.kakao.com/oauth/token
-            user-info-uri: https://kapi.kakao.com/v2/user/me
-            user_name_attribute: id
-
-jdbc:
-  url: jdbc:log4jdbc:postgresql://10.10.5.183:5432/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
-  username: cenadm02
-  password: cenlotaws123!
-  driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-
-  jpa:
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL10Dialect
-        ddl-auto: update
-        format_sql: true
-#        default_batch_fetch_size: 1000
-    show-sql: true
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 10MB
-      max-request-size: 50MB
-  cache:
-    jcache:
-      config: classpath:ehcache.xml
-
-# rabbitmq server
-#  rabbitmq:
-#    host: ${rabbitmq.hostname:localhost}
-#    port: 5672
-#    username: guest
-#    password: guest
-
-#jwt:
-#  header: Authorization
-  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
-  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
-#  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
-#  token-validity-in-seconds: 86400
+  cloud:
+    gateway:
+      routes:
+        - id: lotuser-service
+          uri: lb://LOTUSER-SERVICE
+          predicates:
+            - Path=/lotuser-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/lotuser-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: game-mng-service
+          uri: lb://GAME-MNG-SERVICE
+          predicates:
+            - Path=/game-mng-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-mng-service/(?<segment>.*), /$\{segment}
+        - id: ticket-sue-service
+          uri: lb://TICKET-SUE-SERVICE
+          predicates:
+            - Path=/ticket-sue-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/ticket-sue-service/(?<segment>.*), /$\{segment}
+        - id: game-lotto645-service
+          uri: lb://GAME-LOTTO645-SERVICE
+          predicates:
+            - Path=/game-lotto645-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-lotto645-service/(?<segment>.*), /$\{segment}
+        - id: game-lotto649-service
+          uri: lb://GAME-LOTTO649-SERVICE
+          predicates:
+            - Path=/game-lotto649-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-lotto649-service/(?<segment>.*), /$\{segment}
+        - id: game-powerball-service
+          uri: lb://GAME-POWERBALL-SERVICE
+          predicates:
+            - Path=/game-powerball-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-powerball-service/(?<segment>.*), /$\{segment}
+        - id: game-cblotto-service
+          uri: lb://GAME-CBLOTTO-SERVICE
+          predicates:
+            - Path=/game-cblotto-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-cblotto-service/(?<segment>.*), /$\{segment}            
+        - id: producer-service
+          uri: lb://PRODUCER-SERVICE
+          predicates:
+            - Path=/producer-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/producer-service/(?<segment>.*), /$\{segment}
+        - id: openapi
+          uri: http://cenlots2024-cenlots-api-service
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<segment>.*), /$\{segment}/v3/api-docs
+      default-filters:
+        - name: GlobalFilter
+          args:
+            preLogger: true
+            postLogger: true
+      discovery:
+        locator:
+          enabled: true
 
 # config server actuator
 management:
@@ -95,31 +98,26 @@ management:
     web:
       exposure:
         include: refresh, health, beans, info
-  health:
-    mail:
-      enabled: false
 
 info:
   app:
-    name: User Service
-    description: 로그인, 회원관리 및 관리자 기능을 제공
+    name: Spring Cloud Gateway
+    description: API 라우팅 및 보안, 모니터링/메트릭 등의 기능을 간단하고 효과적인 방법으로 제공
+  swagger-ui: http://cenlots2024-cenlots-api-service/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
-log4jdbc:
-  spylogdelegator:
-    name: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
-  dump:
-    sql:
-      maxlinelength: 0
+springdoc:
+  swagger-ui:
+  path: /swagger-ui.html
+  
+apigateway:
+  host: http://cenlots2024-cenlots-api-service
 
-messages:
-  directory: test
-
-#eureka:
-#  instance:
-#    prefer-ip-address: true
-#    hostname: cenlots2024-discoveryserver-service
-#  client:
-#    register-with-eureka: true
-#    fetch-registry: true
-#    service-url:
-#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: cenlots2024-discoveryserver-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}/eureka/
