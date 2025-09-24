@@ -5,8 +5,7 @@ spring:
   application:
     name: lotuser-service
   profiles:
-    active:
-      on-profile: local
+    active: local
   redis:
     lettuce:
       pool:
@@ -18,7 +17,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-  # oauth2 를 사용하기 위해서는 아래의 TODO 를 등록해야 함
   security:
     user:
       name: admin
@@ -27,8 +25,8 @@ spring:
       client:
         registration:
           kakao:
-            client-id: 6c1a559189b320e2b1c6ede7c5506c01 # TODO https://developers.kakao.com/product/kakaoLogin
-            client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf # TODO
+            client-id: 6c1a559189b320e2b1c6ede7c5506c01
+            client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf
             redirect-uri: http://localhost:8080/oauth2/callback/kakao
             client-authentication-method: POST
             authorization-grant-type: authorization_code
@@ -41,12 +39,12 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user_name_attribute: id
 
-
-jdbc:
-  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
-  username: cenadm02
-  password: cenlotaws123!
-  driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+  # spring.datasource / spring.jpa / spring.servlet / spring.cache
+  datasource:
+    url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+    username: cenadm02
+    password: cenlotaws123!
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
   jpa:
     hibernate:
@@ -54,19 +52,19 @@ jdbc:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
-        ddl-auto: update
         format_sql: true
     show-sql: true
+
   servlet:
     multipart:
       enabled: true
       max-file-size: 10MB
       max-request-size: 50MB
+
   cache:
     jcache:
       config: classpath:ehcache.xml
 
-# config server actuator
 management:
   endpoints:
     web:
@@ -78,7 +76,7 @@ management:
 
 info:
   app:
-    name: User Service
+    name: Lotuser Service
     description: 로그인, 회원관리 및 관리자 기능을 제공
 
 log4jdbc:
@@ -100,4 +98,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
-  
