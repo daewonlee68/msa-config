@@ -1,11 +1,12 @@
 server:
-  port: 9011
+  port: 9050
 
 spring:
   application:
     name: lotuser-service
   profiles:
-    active: local
+    active:
+      on-profile: local
   redis:
     lettuce:
       pool:
@@ -14,9 +15,15 @@ spring:
         min-idle: 2
     port: 6666
     host: localhost
+
+#  cloud:
+#    config:
+#      enabled: true
+#      bootstrap.enabled: true
   main:
     allow-bean-definition-overriding: true
 
+  # oauth2 를 사용하기 위해서는 아래의 TODO 를 등록해야 함
   security:
     user:
       name: admin
@@ -25,8 +32,8 @@ spring:
       client:
         registration:
           kakao:
-            client-id: 6c1a559189b320e2b1c6ede7c5506c01
-            client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf
+            client-id: 6c1a559189b320e2b1c6ede7c5506c01 # TODO https://developers.kakao.com/product/kakaoLogin
+            client-secret: 8NxjNcruMpXQeje7RRWMAXCUN6z7qQgf # TODO
             redirect-uri: http://localhost:8080/oauth2/callback/kakao
             client-authentication-method: POST
             authorization-grant-type: authorization_code
@@ -39,12 +46,15 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user_name_attribute: id
 
-  # spring.datasource / spring.jpa / spring.servlet / spring.cache
-  datasource:
-    url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb02?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
-    username: cenadm02
-    password: cenlotaws123!
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#  h2:
+#    console:
+#      enabled: true
+
+jdbc:
+  url: jdbc:log4jdbc:postgresql://localhost:7777/cenlotsdb03?charSet=UTF-8&prepareThreshold=1&serverTimezone=Asia/Seoul
+  username: cenadm03
+  password: cenlotaws123!
+  driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
   jpa:
     hibernate:
@@ -52,19 +62,34 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        ddl-auto: update
         format_sql: true
+#        default_batch_fetch_size: 1000
     show-sql: true
-
   servlet:
     multipart:
       enabled: true
       max-file-size: 10MB
       max-request-size: 50MB
-
   cache:
     jcache:
       config: classpath:ehcache.xml
 
+# rabbitmq server
+#  rabbitmq:
+#    host: ${rabbitmq.hostname:localhost}
+#    port: 5672
+#    username: guest
+#    password: guest
+
+#jwt:
+#  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
+#  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+#  token-validity-in-seconds: 86400
+
+# config server actuator
 management:
   endpoints:
     web:
@@ -98,3 +123,4 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
+  
